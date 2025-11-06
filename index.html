@@ -55,11 +55,40 @@
 
     nav a:hover {
       color: #f97316;
+      @media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  nav h1 {
+    font-size: 1.2rem;
+    text-align: center;
+  }
+
+  nav ul {
+    display: none;
+  }
+
+  section {
+    padding: 50px 15px;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  footer {
+    font-size: 0.9rem;
+    padding: 20px 10px;
+  }
+}
     }
 
     /* ------------------ SECCIONES ------------------ */
     section {
-      padding: 100px 20px;
+      padding: 70px 20px;
       max-width: 900px;
       margin: 0 auto;
       opacity: 0;
@@ -118,6 +147,33 @@
       nav h1 {
         font-size: 1.2rem;
       }
+      .galeria {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.galeria img {
+  width: 200px;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+  transition: transform 0.3s ease;
+}
+
+.galeria img:hover {
+  transform: scale(1.05);
+}
+
+/* Versión móvil */
+@media (max-width: 768px) {
+  .galeria img {
+    width: 100%;
+    max-width: 320px;
+  }
+}
     }
   </style>
 </head>
@@ -200,12 +256,14 @@
     </section>
 <section id="evidencias">
       <h2>Evidencias</h2>
-      <ul>
-        <img src="imgs/evidencias1.jpg.jpg" width= "200" height= "300">
-        <img src="imgs/evidencias 2.jpg" width= "200" height= "300">
-        <img src="imgs/evidencia 3.jpg" width="200" height="300">
-        <img src="imgs/evidencia 4.jpg" width="200" height="300">
-        <img src="imgs/evidencia 5.jpg" width="405" height="300">
+      <div class="galeria">
+         <img src="imgs/evidencias1.jpg.jpg" alt="Evidencia 1">
+         <img src="imgs/evidencias 2.jpg" alt="Evidencia 2">
+         <img src="imgs/evidencia 3.jpg" alt="Evidencia 3">
+         <img src="imgs/evidencia 4.jpg" alt="Evidencia 4">
+         <img src="imgs/evidencia 5.jpg" alt="Evidencia 5">
+</div>
+
       </ul>
       <p><strong>Institución:</strong> Trilce Santa María – Secundaria</p>
     </section>
