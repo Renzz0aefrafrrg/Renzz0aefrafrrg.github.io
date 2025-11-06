@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Purificación de Cobre por Electrólisis</title>
-  <link rel="icon" type="imagen/png" href="imgs/favicon.png">
+  <link rel="icon" type="image/png" href="imgs/favicon.png">
+
   <style>
     /* ------------------ ESTILOS GENERALES ------------------ */
     body {
@@ -36,6 +37,14 @@
       color: #f97316;
       font-size: 1.5rem;
       margin: 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    nav h1 img {
+      width: 100px;
+      height: 50px;
     }
 
     nav ul {
@@ -55,35 +64,6 @@
 
     nav a:hover {
       color: #f97316;
-      @media (max-width: 768px) {
-  nav {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  nav h1 {
-    font-size: 1.2rem;
-    text-align: center;
-  }
-
-  nav ul {
-    display: none;
-  }
-
-  section {
-    padding: 50px 15px;
-  }
-
-  img {
-    max-width: 100%;
-    height: auto;
-  }
-
-  footer {
-    font-size: 0.9rem;
-    padding: 20px 10px;
-  }
-}
     }
 
     /* ------------------ SECCIONES ------------------ */
@@ -139,41 +119,68 @@
       margin-bottom: 10px;
     }
 
+    /* --- Animación de imágenes --- */
+    img {
+      opacity: 0;
+      transform: scale(0.95);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    img.loaded {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* --- Galería de evidencias --- */
+    .galeria {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .galeria img {
+      width: 200px;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+      transition: transform 0.3s ease;
+    }
+
+    .galeria img:hover {
+      transform: scale(1.05);
+    }
+
     /* ------------------ RESPONSIVE ------------------ */
     @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      nav h1 {
+        font-size: 1.2rem;
+        text-align: center;
+      }
+
       nav ul {
         display: none;
       }
-      nav h1 {
-        font-size: 1.2rem;
+
+      section {
+        padding: 50px 15px;
       }
-      .galeria {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 15px;
-  margin-top: 20px;
-}
 
-.galeria img {
-  width: 200px;
-  height: auto;
-  border-radius: 10px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.15);
-  transition: transform 0.3s ease;
-}
+      .galeria img {
+        width: 100%;
+        max-width: 320px;
+      }
 
-.galeria img:hover {
-  transform: scale(1.05);
-}
-
-/* Versión móvil */
-@media (max-width: 768px) {
-  .galeria img {
-    width: 100%;
-    max-width: 320px;
-  }
-}
+      footer {
+        font-size: 0.9rem;
+        padding: 20px 10px;
+      }
     }
   </style>
 </head>
@@ -182,8 +189,9 @@
   <header>
     <nav>
       <h1 class="logo">
-        <img src="imgs/Logo.png" width="100" height="50">
-         Electrólisis del Cobre - 2025</h1>
+        <img src="imgs/Logo.png" alt="Logo">
+        Electrólisis del Cobre - 2025
+      </h1>
       <ul>
         <li><a href="#introduccion">Introducción</a></li>
         <li><a href="#objetivo">Objetivo</a></li>
@@ -199,10 +207,10 @@
   <main>
     <section id="introduccion">
       <h2>Introducción</h2>
-      <p>La electrólisis es una técnica fascinante que nos permite transformar la electricidad en una herramienta capaz de modificar la materia. A través del paso de corriente eléctrica por una solución conductora, se pueden provocar reacciones químicas que normalmente no ocurrirían de manera natural. En este proyecto demostramos cómo, a partir de una solución de sulfato de cobre (CuSO₄) y con el uso de electrodos de grafito, es posible separar y obtener cobre metálico puro.
-        <div style="text-align: center;">
+      <p>La electrólisis es una técnica fascinante que nos permite transformar la electricidad en una herramienta capaz de modificar la materia. A través del paso de corriente eléctrica por una solución conductora, se pueden provocar reacciones químicas que normalmente no ocurrirían de manera natural. En este proyecto demostramos cómo, a partir de una solución de sulfato de cobre (CuSO₄) y con el uso de electrodos de grafito, es posible separar y obtener cobre metálico puro.</p>
+      <div style="text-align: center;">
         <img src="imgs/imagen referencial.png" alt="Imagen referencial del proceso" width="500" height="400">
-        </div>
+      </div>
     </section>
 
     <section id="objetivo">
@@ -217,35 +225,31 @@
       <p><strong>Seguridad:</strong> Guantes de nitrilo, gafas de protección y bata de laboratorio.</p>
       <p><strong>Procedimiento:</strong></p>
       <ul>
-        <li>Preparación de la Solución Electrolítica: Pesar exactamente 125 g de CuSO4⋅5H2O y disolverlo en 500 mL de agua destilada. Se utiliza agua destilada para asegurar que solo reaccionen los iones de sulfato (〖"SO" 〗_4^(2-)) y cobre (〖"Cu" 〗^(2+)) sin la interferencia de otras impurezas. El agua del grifo contendría otros iones que competirían por la reacción, contaminando el cobre depositado o alterando el proceso. Se obtiene una solución de aprox. 1 M. [CuSO4⋅5H2O]≈249.685 g/mol. </li>
-        <li>Preparación de Electrodos: Limpiar los electrodos de grafito (obtenidos de pilas tipo D) con lija fina, porque cualquier contaminante en su superficie puede interferir con la reacción, causando reacciones secundarias o impidiendo la reacción principal </li>
-        <li>Montaje y Conexión: Sumergir los electrodos sin que se toquen. Conectar el electrodo que actuará como Cátodo al polo negativo (–) y el Ánodo al polo positivo (+). </li>
-        <li>Electrólisis: Encender la fuente de 9V. Dejar actuar durante 20−30 minutos, observando los cambios. </li>
-        <li>Finalización: Apagar, desconectar y secar el cobre depositado en el cátodoFinalización: Apagar, desconectar y secar el cobre depositado en el cátodo</li>
+        <li>Preparar una solución de CuSO₄ de aproximadamente 1 M.</li>
+        <li>Limpiar los electrodos de grafito con lija fina.</li>
+        <li>Montar el sistema y conectar los electrodos.</li>
+        <li>Encender la fuente de 9V durante 20–30 minutos.</li>
+        <li>Apagar, desconectar y secar el cobre depositado en el cátodo.</li>
       </ul>
     </section>
 
     <section id="resultados">
       <h2>Resultados</h2>
-      <p>Durante la electrólisis se observan las siguientes semirreacciones:</p>
       <ul>
         <li><strong>Cátodo (-):</strong> Cu²⁺ + 2e⁻ → Cu(s)</li>
         <li><strong>Ánodo (+):</strong> 2H₂O(l) → O₂(g) + 4H⁺(ac) + 4e⁻</li>
       </ul>
-      <p>La corriente impulsa los iones Cu²⁺ hacia el cátodo, donde se reducen para formar cobre metálico puro. El grafito, al ser inerte, evita la contaminación del cobre y permite una purificación eficiente.</p>
+      <p>Los iones Cu²⁺ se reducen en el cátodo formando cobre metálico puro. El grafito inerte evita contaminación, asegurando una purificación eficiente.</p>
     </section>
 
     <section id="conclusiones">
       <h2>Conclusiones</h2>
-      <p>El experimento logró exitosamente la deposición de cobre metálico puro sobre el cátodo. Se demostró el principio fundamental de la electrólisis: la conversión de energía eléctrica en energía química.</p>
-      <p>El uso de electrodos de grafito fue esencial, ya que no se disolvieron durante el proceso. Este principio es la base para la refinación industrial de metales, como el cobre, con pureza superior al 99.9%.</p>
-      <p class="quote">"La ciencia no es solo conocimiento; es la luz que disipa la oscuridad de la ignorancia, permitiéndonos reescribir nuestro destino y comprender nuestro lugar en el cosmos."</p>
+      <p>El experimento demostró el principio de la electrólisis: la conversión de energía eléctrica en energía química. El cobre se depositó de manera pura sobre el cátodo.</p>
+      <p class="quote">"La ciencia no es solo conocimiento; es la luz que disipa la oscuridad de la ignorancia, permitiéndonos reescribir nuestro destino."</p>
     </section>
 
     <section id="creditos">
       <h2>Créditos</h2>
-      <p><strong>Proyecto:</strong> Purificación de Cobre por Electrólisis con Electrodos de Grafito</p>
-      <p><strong>Integrantes:</strong></p>
       <ul>
         <li>✓ FLORIAN SUPO, Bryan Alexander</li>
         <li>✓ VELA BOCANEGRA, Emily Sofía</li>
@@ -254,26 +258,25 @@
       </ul>
       <p><strong>Institución:</strong> Trilce Santa María – Secundaria</p>
     </section>
-<section id="evidencias">
+
+    <section id="evidencias">
       <h2>Evidencias</h2>
       <div class="galeria">
-         <img src="imgs/evidencias1.jpg.jpg" alt="Evidencia 1">
-         <img src="imgs/evidencias 2.jpg" alt="Evidencia 2">
-         <img src="imgs/evidencia 3.jpg" alt="Evidencia 3">
-         <img src="imgs/evidencia 4.jpg" alt="Evidencia 4">
-         <img src="imgs/evidencia 5.jpg" alt="Evidencia 5">
-</div>
-
-      </ul>
-      <p><strong>Institución:</strong> Trilce Santa María – Secundaria</p>
+        <img src="imgs/evidencias1.jpg.jpg" alt="Evidencia 1">
+        <img src="imgs/evidencias 2.jpg" alt="Evidencia 2">
+        <img src="imgs/evidencia 3.jpg" alt="Evidencia 3">
+        <img src="imgs/evidencia 4.jpg" alt="Evidencia 4">
+        <img src="imgs/evidencia 5.jpg" alt="Evidencia 5">
+      </div>
     </section>
   </main>
 
   <footer>
     <h3>Día del Logro 2025 - Trilce</h3>
   </footer>
+
   <script>
-    // Animación de aparición al hacer scroll
+    // Animación al hacer scroll
     const sections = document.querySelectorAll("section");
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -282,8 +285,14 @@
         }
       });
     }, { threshold: 0.2 });
-
     sections.forEach(section => observer.observe(section));
+
+    // Animación al cargar imágenes
+    document.querySelectorAll("img").forEach(img => {
+      img.addEventListener("load", () => {
+        img.classList.add("loaded");
+      });
+    });
   </script>
 </body>
 </html>
