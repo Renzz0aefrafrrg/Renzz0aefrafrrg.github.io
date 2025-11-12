@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Purificación de Cobre por Electrólisis</title>
   <link rel="icon" type="image/png" href="imgs/favicon.png">
 
@@ -67,7 +68,7 @@
 
     /* ------------------ SECCIONES ------------------ */
     section {
-      padding: 70px 70px;
+      padding: 100px 10px;
       max-width: 900px;
       margin: 0 auto;
       opacity: 0;
@@ -153,14 +154,20 @@
 
     /* ------------------ RESPONSIVE ------------------ */
     @media (max-width: 768px) {
+      main {margin-top: 100px;}
       nav {
         flex-direction: column;
         align-items: center;
       }
+      nav{
+        flex-direction: column;
+        align-items: center;
+        padding: 0.5rem 1rem;
+      }
 
       nav h1 {
-        font-size: 1.2rem;
-        text-align: center;
+        width: 80px;
+        height: 40px;
       }
 
       nav ul {
